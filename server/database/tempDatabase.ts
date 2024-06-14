@@ -1,4 +1,33 @@
-const db = {
+interface User {
+  name: string;
+  nationality: string;
+  number: number;
+  goldenBalls: number;
+}
+
+interface League {
+  name: String;
+}
+
+interface Task {
+  header: string;
+  author: string;
+  body: string;
+}
+
+interface DB {
+  users: {
+    [key: string]: User;
+  };
+  leagues: {
+    [key: string]: League;
+  };
+  tasks: {
+    [key: string]: Task;
+  };
+}
+
+const db: DB = {
   users: {
     messi: {
       name: "Lionel Messi",
@@ -33,10 +62,40 @@ const db = {
       name: "Saudi Pro League",
     },
   },
+  tasks: {
+    0: {
+      header: "task1",
+      author: "messi",
+      body: "Wonderful wonderful wonderful, just how good is he",
+    },
+    1: {
+      header: "task2",
+      author: "cr7",
+      body: "Medeira, Manchester, Madrid, Turin, and Manchester again. Vintage Cristiano.",
+    },
+  },
 };
 
 const getUsers = (): object => {
   return db.users;
 };
 
-console.log(getUsers());
+const getUser = (username: string): User | null => {
+  const users = db.users;
+
+  if (username in users) {
+    return users[username];
+  } else {
+    return null;
+  }
+};
+
+const getLeagues = (): object => {
+  return db.leagues;
+};
+
+const getTasks = (): object => {
+  return db.tasks;
+};
+
+export { getUsers, getUser, getLeagues, getTasks };
