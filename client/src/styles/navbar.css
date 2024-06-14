@@ -1,0 +1,17 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  max-width: 90%;
+  margin: 0 auto;
+  border-bottom: 1px solid black;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-links h3 {
+  padding-right: 7px;
+}
